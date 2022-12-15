@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="rent-car-app:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/rent_car_app_war</output-path>
+    <root id="archive" name="rent-car-app_war.war">
+      <element id="artifact" artifact-name="rent-car-app:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: javax.servlet:javax.servlet-api:4.0.1" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
