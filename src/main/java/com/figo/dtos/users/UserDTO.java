@@ -1,6 +1,7 @@
-package com.figo.rentcar.dtos.users;
+package com.figo.dtos.users;
 
-import com.figo.rentcar.dtos.base.GenericDTO;
+
+import com.figo.dtos.base.GenericDTO;
 import lombok.*;
 
 
@@ -25,7 +26,10 @@ public class UserDTO extends GenericDTO {
 
 
     @Builder(builderMethodName = "childBuilder")
-    public UserDTO(String id, String firstName, String lastName, String username, String password, String phoneNumber, String region, String address, String createdAt, String updatedAt, String createdBy, String updatedBy, boolean isAdmin, boolean deleted) {
+    public UserDTO(String id, String firstName, String lastName, String username, String password,
+                   String phoneNumber, String region, String address , boolean isAdmin, boolean deleted,
+                   String createdAt, String updatedAt,
+                   String createdBy, String updatedBy) {
         super(id);
         this.firstName = firstName;
         this.lastName = lastName;

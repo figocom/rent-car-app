@@ -1,11 +1,11 @@
-package com.figo.servlets;
+package com.figo.servlets.admin;
 
 
 import com.figo.dtos.photos.PhotoDTO;
 import com.figo.response.DataDTO;
 import com.figo.response.Response;
 import com.figo.services.photo.PhotoService;
-import com.figo.utils.PhotoUtil;
+import com.figo.utils.serviceutil.PhotoUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;

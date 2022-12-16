@@ -1,4 +1,4 @@
-package com.figo.rentcar.response;
+package com.figo.response;
 
 import lombok.Getter;
 import lombok.NonNull;

@@ -1,5 +1,5 @@
-package com.figo.rentcar.enums;
+package com.figo.enums;
 
 public enum OrderStatus {
-    REQUESTED ,ACCEPTED ,REJECTED, Payed, COMPLETED
+    REQUESTED ,ACCEPTED ,REJECTED, Payed, COMPLETED, FINED,FinePayment
 }

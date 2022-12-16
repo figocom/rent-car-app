@@ -1,6 +1,6 @@
-<%@ page import="com.company.controller.DatabaseController" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.figo.daos.RegionDAO" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
@@ -14,25 +14,25 @@
     <div class="container-fluid">
         <ul class="navbar-nav ">
             <li class="nav-item ">
-                <a href="${pageContext.request.contextPath}/adminCabinet" class="nav-link">Home</a>
+                <a href="adminCabinet" class="nav-link">Home</a>
             </li>
             <li class="nav-item ">
-                <a href="${pageContext.request.contextPath}/addCar" class="nav-link" >Add Car</a>
+                <a href="addCar" class="nav-link" >Add Car</a>
             </li>
             <li class="nav-item ">
-                <a href="${pageContext.request.contextPath}/showOrders" class="nav-link" >Show orders</a>
+                <a href="showOrders" class="nav-link" >Show orders</a>
             </li>
             <li class="nav-item">
-                <a href="${pageContext.request.contextPath}/showAllCars" class="nav-link">Show all cars</a>
+                <a href="showAllCars" class="nav-link">Show all cars</a>
             </li>
             <li class="nav-item ">
-                <a href="${pageContext.request.contextPath}/WWADMIN" class="nav-link" >Work with admin</a>
+                <a href="WWADMIN" class="nav-link" >Work with admin</a>
             </li>
             <li class="nav-item ">
-                <a href="${pageContext.request.contextPath}/FileUploadServlet" class="nav-link" >Add Photo to car</a>
+                <a href="FileUploadServlet" class="nav-link" >Add Photo to car</a>
             </li>
             <li class="nav-item  ">
-                <a href="${pageContext.request.contextPath}/logout" class="nav-link ">Logout</a></li>
+                <a href="logout" class="nav-link ">Logout</a></li>
         </ul>
     </div>
 </nav>
@@ -44,7 +44,7 @@
             <%= request.getAttribute("errorAddCar")%>
             <br>
             <% }%>
-            <form action="${pageContext.request.contextPath}/addCar" class="was-validated" method="post">
+            <form action="addCar" class="was-validated" method="post">
                 <div class="mb-3 mt-3 text-start">
                     <label for="carModel" class="form-label ">Car model:</label>
                     <input type="text" class="form-control" id="carModel" placeholder="Enter car model :" name="carModel" required>
@@ -72,7 +72,7 @@
                 <div class="form-floating">
                     <select class="form-select" id="carRegion" name="carRegion">
                         <%! List<String> regions=new ArrayList<>(); %>
-                        <% regions= DatabaseController.getRegions();%>
+                        <% regions= RegionDAO.getRegions();%>
                         <% for (String region : regions) { %>
                         <option><%=region%></option>
                         <% ;}%>

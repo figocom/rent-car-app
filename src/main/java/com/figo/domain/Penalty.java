@@ -1,4 +1,4 @@
-package com.company.entity;
+package com.figo.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

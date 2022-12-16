@@ -1,7 +1,6 @@
-package com.figo.servlets;
+package com.figo.servlets.auth;
 
 
-import com.figo.domain.User;
 import com.figo.dtos.users.UserCreateDTO;
 
 import com.figo.response.DataDTO;
@@ -9,7 +8,7 @@ import com.figo.response.Response;
 import com.figo.services.user.UserService;
 
 
-import com.figo.utils.UserUtil;
+import com.figo.utils.serviceutil.UserUtil;
 
 
 import javax.servlet.ServletException;

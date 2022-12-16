@@ -1,4 +1,4 @@
-package uz.jl.blogpost.backend.mappers;
+package com.figo.mapper;
 
 public interface Mapper {
 }

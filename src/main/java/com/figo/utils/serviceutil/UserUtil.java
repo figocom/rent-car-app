@@ -1,5 +1,6 @@
-package com.figo.utils;
+package com.figo.utils.serviceutil;
 
+import com.figo.criteria.UserCriteria;
 import com.figo.daos.UserDAO;
 import com.figo.dtos.users.UserDTO;
 import com.figo.mapper.UserMapper;
@@ -10,6 +11,7 @@ import com.figo.services.user.UserServiceImpl;
 import com.figo.utils.validators.UserValidator;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 public class UserUtil {
     public  static UserService getService() {
@@ -24,5 +26,11 @@ public class UserUtil {
         Response<DataDTO<UserDTO>> dataDTOResponse = serviceUser.get(sessionUserEmail);
         String id = dataDTOResponse.data().getData().getId();
         return Integer.valueOf(id);
+    }
+    public static List<UserDTO> getAdmins() {
+        UserService service =getService();
+        Response<DataDTO<List<UserDTO>>> all = service.getAll(new UserCriteria(true));
+
+        return all.data().getData();
     }
 }

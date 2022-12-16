@@ -2,13 +2,19 @@ package com.figo.servlets.user;
 
 
 
-import com.figo.criteria.OrderCriteria;
-import com.figo.dtos.orders.OrderDTO;
+import com.figo.criteria.PayCardCriteria;
+import com.figo.daos.OrderCarPhotoDAO;
+import com.figo.domain.OrderCarPhoto;
+import com.figo.dtos.orders.OrderUpdateDTO;
+import com.figo.dtos.paycards.PayCardDTO;
+import com.figo.enums.OrderStatus;
 import com.figo.response.DataDTO;
 import com.figo.response.Response;
 import com.figo.services.order.OrderService;
-import com.figo.utils.OrderUtil;
-import com.figo.utils.UserUtil;
+import com.figo.services.paycard.PayCardService;
+import com.figo.utils.serviceutil.OrderUtil;
+import com.figo.utils.serviceutil.PayCardUtil;
+import com.figo.utils.serviceutil.UserUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,39 +25,51 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet("/MyOrders")
-public class UsersOrders extends HttpServlet {
+public class UserOrdersServlet extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        OrderService service = OrderUtil.getService();
-        Response<DataDTO<List<OrderDTO>>> all = service.getAll(new OrderCriteria(UserUtil.getSessionUserId(req)));
-        req.setAttribute("myOrders",all.data().getData());
-        req.getRequestDispatcher("/usersFrontend/UserOrders.jsp").forward(req,resp);
+        Integer id = UserUtil.getSessionUserId(req);
+        List<OrderCarPhoto>orders=OrderCarPhotoDAO.getUserOrders(id);
+        System.out.println(orders);
+        PayCardService service = PayCardUtil.getService();
+        Response<DataDTO<List<PayCardDTO>>> all = service.getAll(new PayCardCriteria(id));
+        req.setAttribute("cards", all.data().getData());
+        req.setAttribute("myOrders",orders);
+        req.getRequestDispatcher("/usersFrontendPages/UserOrders.jsp").forward(req,resp);
 
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int orderId = Integer.parseInt(req.getParameter("orderId"));
+        PayCardService service = PayCardUtil.getService();
+        OrderService serviceO = OrderUtil.getService();
+        String orderId = req.getParameter("orderId");
         double totalPrice= Double.parseDouble(req.getParameter("totalPrice"));
         String command = req.getParameter("command");
         switch (command) {
             case "payed" -> {
                 int card = Integer.parseInt(req.getParameter("cardIdForPay"));
-                double balance = DatabaseController.getBalance(card);
-                if (balance >= totalPrice) {
-                    Result result = DatabaseController.payToOrder(card, balance - totalPrice, orderId);
-                    req.setAttribute("editOrderStatus", result.getMessage());
+                Response<DataDTO<PayCardDTO>> response = service.get(String.valueOf(card));
+                PayCardDTO data = response.data().getData();
+                if (data.getBalance() >= totalPrice) {
+                    data.setBalance(data.getBalance()-totalPrice);
+                    Response<DataDTO<Boolean>> update = service.update(data);
+                    if (!update.data().getData()) {
+                       serviceO.update(new OrderUpdateDTO(orderId, OrderStatus.Payed));
+                        req.setAttribute("editOrderStatus", update.data().getError().getFriendlyMessage());
+                    }
                 } else {
                     req.setAttribute("editOrderStatus", "You don't have enough money in your account");
                 }
             }
-            case "addCard" -> req.getRequestDispatcher("/usersFrontend/addCard.jsp").forward(req, resp);
-            case "completed" -> DatabaseController.compiledOrder(orderId);
+            case "addCard" -> req.getRequestDispatcher("/usersFrontendPages/addCard.jsp").forward(req, resp);
+            case "completed" -> serviceO.update(new OrderUpdateDTO(orderId , OrderStatus.COMPLETED));
         }
-
-        List<CarOrder> orders= DatabaseController.getUserOrders(String.valueOf(req.getSession().getAttribute("user")));
+        Integer id = UserUtil.getSessionUserId(req);
+        List<OrderCarPhoto>orders=OrderCarPhotoDAO.getUserOrders(id);
         req.setAttribute("myOrders",orders);
-        req.getRequestDispatcher("/usersFrontend/UserOrders.jsp").forward(req,resp);
+        req.getRequestDispatcher("/usersFrontendPages/UserOrders.jsp").forward(req,resp);
 
     }
 }

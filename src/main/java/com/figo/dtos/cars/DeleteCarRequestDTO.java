@@ -1,4 +1,4 @@
-package com.figo.dtos.users;
+package com.figo.dtos.cars;
 
-public record LoginRequestDTO(String username, String password) {
+public record DeleteCarRequestDTO(String carNumber) {
 }

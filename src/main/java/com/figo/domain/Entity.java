@@ -1,4 +1,4 @@
-package com.figo.rentcar.domain;
+package com.figo.domain;
 
 public interface Entity {
 }

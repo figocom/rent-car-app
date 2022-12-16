@@ -1,4 +1,4 @@
-package com.figo.utils;
+package com.figo.utils.serviceutil;
 
 import com.figo.daos.UserDAO;
 import com.figo.mapper.UserMapper;

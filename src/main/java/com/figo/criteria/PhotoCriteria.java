@@ -1,2 +1,16 @@
-package com.figo.criteria;public class PhotoCriteria {
+package com.figo.criteria;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+public class PhotoCriteria extends GenericCriteria{
+    List<String>carNumbers =new ArrayList<>();
 }

@@ -1,4 +1,4 @@
-package uz.jl.blogpost.backend.criteria;
+package com.figo.criteria;
 
 public class GenericCriteria {
 

@@ -1,4 +1,4 @@
-package com.figo.servlets;
+package com.figo.servlets.user;
 
 
 import com.figo.dtos.cars.CarDTO;
@@ -8,9 +8,9 @@ import com.figo.enums.OrderStatus;
 import com.figo.response.DataDTO;
 import com.figo.response.Response;
 import com.figo.services.order.OrderService;
-import com.figo.utils.CarUtil;
-import com.figo.utils.OrderUtil;
-import com.figo.utils.UserUtil;
+import com.figo.utils.serviceutil.CarUtil;
+import com.figo.utils.serviceutil.OrderUtil;
+import com.figo.utils.serviceutil.UserUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

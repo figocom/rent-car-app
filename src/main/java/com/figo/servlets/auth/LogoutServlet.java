@@ -1,4 +1,4 @@
-package com.company.controller.authServiceServlets;
+package com.figo.servlets.auth;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,6 +19,6 @@ public class LogoutServlet extends HttpServlet {
         if (session.getAttribute("admin")!=null){
             session.setAttribute("admin" , null);
         }
-        req.getRequestDispatcher("index.html").forward(req, resp);
+        req.getRequestDispatcher("index.jsp").forward(req, resp);
     }
 }

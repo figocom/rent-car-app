@@ -1,4 +1,4 @@
-package com.figo.rentcar.dtos.base;
+package com.figo.dtos.base;
 
 import java.io.Serializable;
 

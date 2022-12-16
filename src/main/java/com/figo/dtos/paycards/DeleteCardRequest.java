@@ -1,2 +1,4 @@
-package com.figo.dtos.paycards;public class DeleteCardRequest {
+package com.figo.dtos.paycards;
+
+public record DeleteCardRequest(String cardNumber) {
 }

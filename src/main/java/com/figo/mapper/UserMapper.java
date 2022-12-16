@@ -1,33 +1,31 @@
-package uz.jl.blogpost.backend.mappers;
+package com.figo.mapper;
 
+
+import com.figo.domain.User;
+import com.figo.dtos.users.UserCreateDTO;
+import com.figo.dtos.users.UserDTO;
+import com.figo.dtos.users.UserUpdateDTO;
 import lombok.NonNull;
-import uz.jl.blogpost.backend.domains.User;
-import uz.jl.blogpost.backend.dtos.user.UserCreateDTO;
-import uz.jl.blogpost.backend.dtos.user.UserDTO;
-import uz.jl.blogpost.backend.dtos.user.UserUpdateDTO;
 
-import java.time.Clock;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserMapper implements BaseMapper<User, UserDTO, UserCreateDTO, UserUpdateDTO> {
     @Override
     public User fromCreateDTO(@NonNull UserCreateDTO dto) {
-        return User.childBuilder()
-                .username(dto.username())
-                .password(dto.password())
-                .email(dto.email())
-                .fullName(dto.fullName())
-                .status(User.Status.NOT_ACTIVE)
-                .role(User.AuthRole.USER)
-                .createdAt(LocalDateTime.now(Clock.system(ZoneId.of("Asia/Tashkent"))))
-                .language(User.Language.RU)
-                .build();
+        return User.childBuilder().
+                lastName(dto.lastName()).
+                firstName(dto.firstName()).
+                phoneNumber(dto.phoneNumber()).
+                username(dto.username()).
+                region(dto.region()).
+                address(dto.address()).
+                password(dto.password()).
+                build();
     }
 
     @Override
-    public User fromUpdateDTO(@NonNull UserCreateDTO dto) {
+    public User fromUpdateDTO(@NonNull UserUpdateDTO dto) {
         return null;
     }
 
@@ -35,18 +33,25 @@ public class UserMapper implements BaseMapper<User, UserDTO, UserCreateDTO, User
     public UserDTO toDTO(@NonNull User domain) {
         return UserDTO.childBuilder()
                 .id(domain.getId())
+                .firstName(domain.getFirstName())
+                .lastName(domain.getLastName())
                 .username(domain.getUsername())
-                .role(domain.getRole().name())
-                .status(domain.getStatus().name())
                 .password(null)
-                .email(domain.getEmail())
-                .fullName(domain.getFullName())
-                .language(domain.getLanguage().name())
+                .phoneNumber(domain.getPhoneNumber())
+                .region(domain.getRegion())
+                .address(domain.getAddress())
+                .isAdmin(domain.isAdmin())
+                .deleted(domain.isDeleted())
                 .build();
     }
 
     @Override
-    public List<UserDTO> toDTO(@NonNull List<User> domain) {
-        return null;
+    public List<UserDTO> toDTOs(@NonNull List<User> domains) {
+        List<UserDTO> userDTOList=new ArrayList<>();
+        for (User domain : domains) {
+            UserDTO userDTO = toDTO(domain);
+            userDTOList.add(userDTO);
+        }
+        return userDTOList;
     }
 }

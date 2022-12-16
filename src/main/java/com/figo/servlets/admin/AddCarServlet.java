@@ -1,4 +1,4 @@
-package com.figo.servlets;
+package com.figo.servlets.admin;
 
 
 import com.figo.dtos.cars.CarCreateDTO;
@@ -7,7 +7,7 @@ import com.figo.response.DataDTO;
 import com.figo.response.Response;
 import com.figo.services.car.CarService;
 
-import com.figo.utils.CarUtil;
+import com.figo.utils.serviceutil.CarUtil;
 
 
 import javax.servlet.ServletException;

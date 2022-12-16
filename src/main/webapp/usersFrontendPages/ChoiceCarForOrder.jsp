@@ -1,8 +1,9 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="com.company.entity.Car" %>
 
-<%@ page import="com.company.controller.DatabaseController" %>
+<%@ page import="com.figo.dtos.cars.CarDTO" %>
+<%@ page import="com.figo.dtos.photos.PhotoDTO" %>
+
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
@@ -14,51 +15,54 @@
 <nav class="navbar navbar-expand-sm bg-dark  justify-content-center text-white navbar-dark">
     <div class="container-fluid">
         <ul class="navbar-nav ">
-            <li class="nav-item "><a href="${pageContext.request.contextPath}/userCabinet" class="nav-link" >Home</a></li>
-            <li class="nav-item "><a href="${pageContext.request.contextPath}/carsShow" class=" nav-link" >Show Car</a></li>
-            <li class="nav-item "> <a href="${pageContext.request.contextPath}/MyOrders" class=" nav-link" >My orders</a></li>
-            <li class="nav-item"><a href="${pageContext.request.contextPath}/addCard" class=" nav-link" >Add card</a></li>
-            <li class="nav-item "><a href="${pageContext.request.contextPath}/Penalties" class="nav-link">Penalties</a></li>
-            <li class="nav-item  "><a href="${pageContext.request.contextPath}/logout" class="nav-link " >Logout</a></li>
+            <li class="nav-item "><a href="carsShow" class=" nav-link" >Show Car</a></li>
+            <li class="nav-item "> <a href="MyOrders" class=" nav-link" >My orders</a></li>
+            <li class="nav-item"><a href="addCard" class=" nav-link" >Add card</a></li>
+            <li class="nav-item "><a href="Penalties" class="nav-link">Penalties</a></li>
+            <li class="nav-item  "><a href="logout" class="nav-link " >Logout</a></li>
         </ul>
     </div>
 </nav>
 <h1 class="text-center">Cars</h1>
 <br>
 
+<%! List<PhotoDTO> images = new ArrayList<>();%>
 <%! List<String> imagesUrl = new ArrayList<>();%>
+<%! List<CarDTO> cars = new ArrayList<>(); %>
+<%cars = (List<CarDTO>) request.getAttribute("cars");%>
+<% images= (List<PhotoDTO>) request.getAttribute("photos");
 
-<%! Object cars = new ArrayList<>(); %>
-<%cars = request.getAttribute("cars");%>
+%>
 
     <div class="container-fluid">
         <div class="row">
-            <% for (Car car : (List<Car>) cars) {
-                imagesUrl = DatabaseController.getImagesByCarNumber(car.getCarNumber());%>
+            <% for (CarDTO car :  cars) {
+                imagesUrl.addAll(images.stream().filter(photoDTO -> photoDTO.getCarNumber().equals(car.getCarNumber())).findFirst().orElse(new PhotoDTO()).getUrls());
+            %>
             <div class="card col-3 m-2">
                 <form method="post" action="carsShow">
-                    <div id="<%=car.getCarNumber()%>" class="carousel slide" data-bs-ride="carousel">
+                    <div id="#demo" class="carousel slide" data-bs-ride="carousel">
                         <%for (int i = 0; i < imagesUrl.size(); i++) { %>
                         <div class="carousel-indicators">
                             <button type="button"
                                     <%if (i == 0) {%>
                                     class="active"<%}%>
-                                    data-bs-target=<%="#"+car.getCarNumber()%> data-bs-slide-to=<%=i%>  >
+                                    data-bs-target="#demo" data-bs-slide-to=<%=i%>  >
                             </button>
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item <% if (i == 0) {%> active<%}%>">
-                                <img src="<%="carPhotos"+imagesUrl.get(i).substring(imagesUrl.get(i).lastIndexOf("/"))%> "
+                                <img src="<%="carImages"+imagesUrl.get(i).substring(imagesUrl.get(i).lastIndexOf("/"))%> "
                                      alt="<%=car.getCarModel()%>"
                                      class="d-block w-100   " height="250">
                             </div>
                         </div>
                         <button class="carousel-control-prev" type="button"
-                                data-bs-slide="prev" data-bs-target=<%="#" + car.getCarNumber()%>>
+                                 data-bs-target="#demo" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon"></span>
                         </button>
                         <button class="carousel-control-next" type="button"
-                                data-bs-slide="next" data-bs-target=<%="#" + car.getCarNumber()%>>
+                                 data-bs-target="#demo" data-bs-slide="next">
                             <span class="carousel-control-next-icon"></span>
                         </button>
                         <%}%>

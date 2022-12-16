@@ -1,2 +1,4 @@
-package com.figo.dtos.orders;public record DeleteOrderRequest() {
+package com.figo.dtos.orders;
+
+public record DeleteOrderRequest(Integer id) {
 }

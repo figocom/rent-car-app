@@ -1,4 +1,4 @@
-package uz.jl.blogpost.backend.utils.validators;
+package com.figo.utils.validators;
 
 public interface BaseValidator {
 }

@@ -1,4 +1,4 @@
-package com.figo.rentcar.domain;
+package com.figo.domain;
 
 import lombok.*;
 
@@ -26,4 +26,8 @@ public class BaseDomain implements Entity {
     private String createdBy;
 
     private String updatedBy;
+
+    public BaseDomain(String id) {
+        this.id=id;
+    }
 }

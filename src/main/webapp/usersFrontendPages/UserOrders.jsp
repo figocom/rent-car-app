@@ -1,8 +1,9 @@
-<%@ page import="com.company.entity.CarOrder" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="com.company.enums.OrderStatus" %>
-<%@ page import="com.company.controller.DatabaseController" %>
+<%@ page import="com.figo.domain.OrderCarPhoto" %>
+<%@ page import="com.figo.enums.OrderStatus" %>
+<%@ page import="com.figo.domain.PayCard" %>
+<%@ page import="com.figo.dtos.paycards.PayCardDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 
@@ -16,12 +17,11 @@
 <nav class="navbar navbar-expand-sm bg-dark  justify-content-center text-white navbar-dark">
     <div class="container-fluid">
         <ul class="navbar-nav ">
-            <li class="nav-item "><a href="${pageContext.request.contextPath}/userCabinet" class="nav-link" >Home</a></li>
-            <li class="nav-item "><a href="${pageContext.request.contextPath}/carsShow" class=" nav-link" >Show Car</a></li>
-            <li class="nav-item "> <a href="${pageContext.request.contextPath}/MyOrders" class=" nav-link" >My orders</a></li>
-            <li class="nav-item"><a href="${pageContext.request.contextPath}/addCard" class=" nav-link" >Add card</a></li>
-            <li class="nav-item "><a href="${pageContext.request.contextPath}/Penalties" class="nav-link">Penalties</a></li>
-            <li class="nav-item  "><a href="${pageContext.request.contextPath}/logout" class="nav-link " >Logout</a></li>
+            <li class="nav-item "><a href="carsShow" class=" nav-link" >Show Car</a></li>
+            <li class="nav-item "> <a href="MyOrders" class=" nav-link" >My orders</a></li>
+            <li class="nav-item"><a href="addCard" class=" nav-link" >Add card</a></li>
+            <li class="nav-item "><a href="Penalties" class="nav-link">Penalties</a></li>
+            <li class="nav-item  "><a href="logout" class="nav-link " >Logout</a></li>
         </ul>
     </div>
 </nav>
@@ -35,12 +35,15 @@
         <br>
         <% }%>
 
+        <%! List<PayCardDTO> cards=new ArrayList<>(); %>
         <% if (request.getAttribute("myOrders") != null) {%>
-        <%! List<CarOrder> carOrder = new ArrayList<>();%>
-        <%carOrder = (List<CarOrder>) request.getAttribute("myOrders");%>
+        <%! List<OrderCarPhoto> carOrder = new ArrayList<>();%>
+        <%carOrder = (List<OrderCarPhoto>) request.getAttribute("myOrders");
+           cards= (List<PayCardDTO>) request.getAttribute("cards");
+        %>
         <br>
         <% }%>
-        <% for (CarOrder carOrder : carOrder) {
+        <% for (OrderCarPhoto carOrder : carOrder) {
             imagesUrl = carOrder.getPhotos().getUrls();%>
         <div class="card col-3 m-2">
             <form method="post" action="MyOrders">
@@ -96,30 +99,28 @@
                     </h5>
                     <h5 class="card-text">Total price: <%=carOrder.getOrder().getTotalPrice()%>$
                     </h5>
-                    <% if (carOrder.getOrder().getStatus().equals(OrderStatus.REQUESTED)) {%>
-                    <h5 class="card-text text-primary">Status: <%=carOrder.getOrder().getStatus()%>
+                    <% if (carOrder.getOrder().getOrderStatus().equals(OrderStatus.REQUESTED)) {%>
+                    <h5 class="card-text text-primary">Status: <%=carOrder.getOrder().getOrderStatus()%>
                     </h5><%}%>
-                    <% if (carOrder.getOrder().getStatus().equals(OrderStatus.ACCEPTED)) {%>
-                    <h5 class="card-text text-warning">Status: <%=carOrder.getOrder().getStatus()%>
+                    <% if (carOrder.getOrder().getOrderStatus().equals(OrderStatus.ACCEPTED)) {%>
+                    <h5 class="card-text text-warning">Status: <%=carOrder.getOrder().getOrderStatus()%>
                     </h5>
                     <input type="hidden" name="totalPrice" value="<%=carOrder.getOrder().getTotalPrice()%>">
                     <button class="  btn btn-primary  "  onclick="document.getElementById('id01').style.display='block'" type="button">Pay</button>
 
                     <%}%>
-                    <% if (carOrder.getOrder().getStatus().equals(OrderStatus.REJECTED)) {%>
-                    <% String rejectCause =DatabaseController.getRejectCause(carOrder.getOrderId());%>
-                    <h5 class="card-text text-danger">Status: <%=carOrder.getOrder().getStatus()%>
-                    <h5 class="card-text text-info"><%=rejectCause%>
+                    <% if (carOrder.getOrder().getOrderStatus().equals(OrderStatus.REJECTED)) {%>
+                    <h5 class="card-text text-danger">Status: <%=carOrder.getOrder().getOrderStatus()%>
 
                     </h5><%}%>
-                    <% if (carOrder.getOrder().getStatus().equals(OrderStatus.Payed)) {%>
-                    <h5 class="card-text text-info">Status: <%=carOrder.getOrder().getStatus()%>
+                    <% if (carOrder.getOrder().getOrderStatus().equals(OrderStatus.Payed)) {%>
+                    <h5 class="card-text text-info">Status: <%=carOrder.getOrder().getOrderStatus()%>
                         <input type="hidden" name="orderId" value="<%=carOrder.getOrderId()%>">
                         <input type="hidden" name="totalPrice" value="<%=carOrder.getOrder().getTotalPrice()%>">
                         <button class="  btn btn-primary  "  name="command" value="completed" type="submit" >Completed</button>
                     </h5><%}%>
-                    <% if (carOrder.getOrder().getStatus().equals(OrderStatus.COMPLETED)) {%>
-                    <h5 class="card-text text-success"> Status: <%=carOrder.getOrder().getStatus()%>
+                    <% if (carOrder.getOrder().getOrderStatus().equals(OrderStatus.COMPLETED)) {%>
+                    <h5 class="card-text text-success"> Status: <%=carOrder.getOrder().getOrderStatus()%>
                     </h5><%}%>
 
                 </div>
@@ -134,13 +135,11 @@
                             <input type="hidden" name="orderId" value="<%=carOrder.getOrderId()%>">
                             <input type="hidden" name="totalPrice" value="<%=carOrder.getOrder().getTotalPrice()%>">
                             <select class="form-select" id="card" name="card">
-                                <%! List<String> cards=new ArrayList<>(); %>
-                                <% cards=DatabaseController.getUserCards(carOrder.getOrder().getUserId());%>
-                                <% for (String card : cards) {
-                                    int cardID = DatabaseController.getCardId(card);%>
-                                <option><%=card%></option>
-                                <td > <input type="hidden" name="cardIdForPay" value=<%=cardID%>> <%=card%> </td>
+                                <% for (PayCardDTO card : cards) {%>
+                                <option><%=card.getCardNumber()%></option>
+                                <td > <input type="hidden" name="cardIdForPay" value=<%=card.getCardNumber()%>> <%=card.getBalance()%> </td>
                                 <% ;}%>
+
                             </select>
                             <label for="card" class="form-label">Select payment card (select one):</label>
                         </div>

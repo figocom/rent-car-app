@@ -11,25 +11,25 @@
     <div class="container-fluid">
         <ul class="navbar-nav ">
             <li class="nav-item ">
-                <a href="${pageContext.request.contextPath}/adminCabinet" class="nav-link">Home</a>
+                <a href="adminCabinet" class="nav-link">Home</a>
             </li>
             <li class="nav-item ">
-                <a href="${pageContext.request.contextPath}/addCar" class="nav-link" >Add Car</a>
+                <a href="addCar" class="nav-link" >Add Car</a>
             </li>
             <li class="nav-item ">
-                <a href="${pageContext.request.contextPath}/showOrders" class="nav-link" >Show orders</a>
+                <a href="showOrders" class="nav-link" >Show orders</a>
             </li>
             <li class="nav-item">
-                <a href="${pageContext.request.contextPath}/showAllCars" class="nav-link">Show all cars</a>
+                <a href="showAllCars" class="nav-link">Show all cars</a>
             </li>
             <li class="nav-item ">
-                <a href="${pageContext.request.contextPath}/WWADMIN" class="nav-link" >Work with admin</a>
+                <a href="WWADMIN" class="nav-link" >Work with admin</a>
             </li>
             <li class="nav-item ">
-                <a href="${pageContext.request.contextPath}/FileUploadServlet" class="nav-link" >Add Photo to car</a>
+                <a href="FileUploadServlet" class="nav-link" >Add Photo to car</a>
             </li>
             <li class="nav-item  ">
-                <a href="${pageContext.request.contextPath}/logout" class="nav-link ">Logout</a></li>
+                <a href="logout" class="nav-link ">Logout</a></li>
         </ul>
     </div>
 </nav>

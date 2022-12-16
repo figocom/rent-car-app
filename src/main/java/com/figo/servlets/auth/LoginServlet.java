@@ -1,14 +1,13 @@
-package com.figo.servlets;
+package com.figo.servlets.auth;
 
 
-import com.figo.daos.UserDAO;
 import com.figo.dtos.users.LoginRequestDTO;
 import com.figo.dtos.users.UserDTO;
 import com.figo.response.DataDTO;
 import com.figo.response.ErrorDTO;
 import com.figo.response.Response;
 import com.figo.services.user.UserService;
-import com.figo.utils.UserUtil;
+import com.figo.utils.serviceutil.UserUtil;
 
 
 import javax.servlet.ServletException;

@@ -1,6 +1,6 @@
-package com.figo.rentcar.domain;
+package com.figo.domain;
 
-import com.figo.rentcar.enums.CarStatus;
+import com.figo.enums.CarStatus;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -32,7 +32,7 @@ public class Car extends BaseDomain {
     @Builder(builderMethodName = "childBuilder")
     public Car(String id, boolean deleted, LocalDateTime createdAt, LocalDateTime updatedAt, String createdBy, String updatedBy,
                @NonNull String carModel, @NonNull String carNumber, @NonNull String carColor, CarStatus carStatus, @NonNull String carRegion,
-               @NonNull Integer countOfPlace, @NonNull Integer carYear , @NonNull String pricePerDay ,String additionInfo) {
+               @NonNull Integer countOfPlace, @NonNull Integer carYear , @NonNull String pricePerDay , String additionInfo) {
         super(id, deleted, createdAt, updatedAt, createdBy, updatedBy);
         this.carModel = carModel;
         this.carNumber = carNumber;

@@ -1,4 +1,4 @@
-package com.figo.rentcar.daos;
+package com.figo.daos;
 
 public interface AbstractDAO {
 }

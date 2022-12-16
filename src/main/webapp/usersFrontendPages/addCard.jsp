@@ -1,7 +1,7 @@
 
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="com.company.controller.DatabaseController" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.figo.dtos.paycards.PayCardDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
@@ -13,22 +13,21 @@
 <nav class="navbar navbar-expand-sm bg-dark  justify-content-center text-white navbar-dark">
     <div class="container-fluid">
         <ul class="navbar-nav ">
-            <li class="nav-item "><a href="${pageContext.request.contextPath}/userCabinet" class="nav-link" >Home</a></li>
-            <li class="nav-item "><a href="${pageContext.request.contextPath}/carsShow" class=" nav-link" >Show Car</a></li>
-            <li class="nav-item "> <a href="${pageContext.request.contextPath}/MyOrders" class=" nav-link" >My orders</a></li>
-            <li class="nav-item"><a href="${pageContext.request.contextPath}/addCard" class=" nav-link" >Add card</a></li>
-            <li class="nav-item "><a href="${pageContext.request.contextPath}/Penalties" class="nav-link">Penalties</a></li>
-            <li class="nav-item  "><a href="${pageContext.request.contextPath}/logout" class="nav-link " >Logout</a></li>
+            <li class="nav-item "><a href="carsShow" class=" nav-link" >Show Car</a></li>
+            <li class="nav-item "> <a href="MyOrders" class=" nav-link" >My orders</a></li>
+            <li class="nav-item"><a href="addCard" class=" nav-link" >Add card</a></li>
+            <li class="nav-item "><a href="Penalties" class="nav-link">Penalties</a></li>
+            <li class="nav-item  "><a href="logout" class="nav-link " >Logout</a></li>
         </ul>
     </div>
 </nav>
 <% if (request.getAttribute("cardStatus")!=null){%>
 <h4 class="text-center"><%= request.getAttribute("cardStatus")%></h4>
 <%}%>
-<%! List<String> cards = new ArrayList<>();%>
-<% String sessionUserEmail = (String) request.getSession().getAttribute("user");
-    Integer userId=DatabaseController.getUserId(sessionUserEmail);
-    cards= DatabaseController.getUserCards(userId);%>
+<%! List<PayCardDTO> cards = new ArrayList<>();%>
+<% if (request.getAttribute("cards")!=null){%>
+     <%  cards= (List<PayCardDTO>) request.getAttribute("cards"); %>
+<%}%>
 <div class="container-fluid">
     <div class="row">
 <% if (cards.size()>0){%>
@@ -40,14 +39,12 @@
                 <th>Delete</th>
             </tr>
             </thead>
-            <% for (String card : cards) {
-                int cardID = DatabaseController.getCardId(card);
-            %>
+            <% for (PayCardDTO card : cards) {%>
             <tbody>
             <form action="addCard" method="post">
                 <tr>
-                    <td > <input type="hidden" name="cardNumberForDelete" value=<%=cardID%>> <%=card%> </td>
-                    <td><%=DatabaseController.getBalance(cardID)%></td>
+                    <td > <input type="hidden" name="cardNumberForDelete" value=<%=card.getCardNumber()%>> <%=card.getCardNumber()%> </td>
+                    <td><%=card.getBalance()%></td>
                     <td><button class=" btn btn-outline-danger " type="submit" >Delete</button></td>
                 </tr>
             </form>
@@ -56,7 +53,7 @@
         </table>
         <%}%>
         <div class="col-6 offset-3 text-center bg-light">
-            <form action="${pageContext.request.contextPath}/addCard" class="was-validated" method="post">
+            <form action="addCard" class="was-validated" method="post">
                 <h1>Add card our system</h1>
 
                 <br>

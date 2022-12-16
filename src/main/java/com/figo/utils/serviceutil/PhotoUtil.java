@@ -1,4 +1,4 @@
-package com.figo.utils;
+package com.figo.utils.serviceutil;
 
 import com.figo.daos.PhotoDAO;
 import com.figo.daos.UserDAO;

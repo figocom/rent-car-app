@@ -1,10 +1,11 @@
-package uz.jl.blogpost.backend.services.base;
+package com.figo.services.base;
 
+import com.figo.criteria.GenericCriteria;
+import com.figo.dtos.base.DTO;
+import com.figo.response.DataDTO;
+import com.figo.response.Response;
 import lombok.NonNull;
-import uz.jl.blogpost.backend.criteria.GenericCriteria;
-import uz.jl.blogpost.backend.dtos.Dto;
-import uz.jl.blogpost.backend.response.DataDTO;
-import uz.jl.blogpost.backend.response.Response;
+
 
 import java.io.Serializable;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
  * @param <ID>
  * @param <C>
  */
-public interface GenericService<D extends Dto, ID extends Serializable, C extends GenericCriteria> {
+public interface GenericService<D extends DTO, ID extends Serializable, C extends GenericCriteria> {
     Response<DataDTO<D>> get(@NonNull ID id);
 
     Response<DataDTO<List<D>>> getAll(@NonNull C criteria);

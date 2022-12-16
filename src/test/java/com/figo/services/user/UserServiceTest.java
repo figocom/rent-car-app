@@ -1,4 +1,4 @@
-package com.figo;
+package com.figo.services.user;
 
 import com.figo.daos.UserDAO;
 import com.figo.dtos.users.LoginRequestDTO;
@@ -7,8 +7,7 @@ import com.figo.dtos.users.UserDTO;
 import com.figo.mapper.UserMapper;
 import com.figo.response.DataDTO;
 import com.figo.response.Response;
-import com.figo.services.user.UserService;
-import com.figo.services.user.UserServiceImpl;
+
 import com.figo.utils.validators.UserValidator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -34,8 +33,8 @@ public class UserServiceTest {
     void registerUserTest() {
         UserCreateDTO dto = new UserCreateDTO("test" , "user",
                 "934565645","root" ,"Navoiy" , "webpage" ,"Manguberdi@66");
-        service.create(dto);
-        dao.shutDownHook();
+        Response<DataDTO<String>> dataDTOResponse = service.create(dto);
+        Assertions.assertTrue(dataDTOResponse.data().isSuccess());
     }
 
 

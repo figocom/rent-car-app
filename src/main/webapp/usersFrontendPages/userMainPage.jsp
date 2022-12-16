@@ -10,12 +10,11 @@
 <nav class="navbar navbar-expand-sm bg-dark  justify-content-center text-white navbar-dark">
     <div class="container-fluid">
         <ul class="navbar-nav ">
-            <li class="nav-item "><a href="${pageContext.request.contextPath}/userCabinet" class="nav-link" >Home</a></li>
-            <li class="nav-item "><a href="${pageContext.request.contextPath}/carsShow" class=" nav-link" >Show Car</a></li>
-            <li class="nav-item "> <a href="${pageContext.request.contextPath}/MyOrders" class=" nav-link" >My orders</a></li>
-            <li class="nav-item"><a href="${pageContext.request.contextPath}/addCard" class=" nav-link" >Add card</a></li>
-            <li class="nav-item "><a href="${pageContext.request.contextPath}/Penalties" class="nav-link">Penalties</a></li>
-            <li class="nav-item  "><a href="${pageContext.request.contextPath}/logout" class="nav-link " >Logout</a></li>
+            <li class="nav-item "><a href="carsShow" class=" nav-link" >Show Car</a></li>
+            <li class="nav-item "> <a href="MyOrders" class=" nav-link" >My orders</a></li>
+            <li class="nav-item"><a href="addCard" class=" nav-link" >Add card</a></li>
+            <li class="nav-item "><a href="Penalties" class="nav-link">Penalties</a></li>
+            <li class="nav-item  "><a href="logout" class="nav-link " >Logout</a></li>
         </ul>
     </div>
 </nav>

@@ -1,6 +1,7 @@
-<%@ page import="com.company.controller.DatabaseController" %>
+
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="com.figo.daos.RegionDAO" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
@@ -12,12 +13,11 @@
 <nav class="navbar navbar-expand-sm bg-dark  justify-content-center text-white navbar-dark">
     <div class="container-fluid">
         <ul class="navbar-nav ">
-            <li class="nav-item "><a href="${pageContext.request.contextPath}/userCabinet" class="nav-link" >Home</a></li>
-            <li class="nav-item "><a href="${pageContext.request.contextPath}/carsShow" class=" nav-link" >Show Car</a></li>
-            <li class="nav-item "> <a href="${pageContext.request.contextPath}/MyOrders" class=" nav-link" >My orders</a></li>
-            <li class="nav-item"><a href="${pageContext.request.contextPath}/addCard" class=" nav-link" >Add card</a></li>
-            <li class="nav-item "><a href="${pageContext.request.contextPath}/Penalties" class="nav-link">Penalties</a></li>
-            <li class="nav-item  "><a href="${pageContext.request.contextPath}/logout" class="nav-link " >Logout</a></li>
+            <li class="nav-item "><a href="carsShow" class=" nav-link" >Show Car</a></li>
+            <li class="nav-item "> <a href="MyOrders" class=" nav-link" >My orders</a></li>
+            <li class="nav-item"><a href="addCard" class=" nav-link" >Add card</a></li>
+            <li class="nav-item "><a href="Penalties" class="nav-link">Penalties</a></li>
+            <li class="nav-item  "><a href="logout" class="nav-link " >Logout</a></li>
         </ul>
     </div>
 </nav>
@@ -26,7 +26,7 @@
 <% if (request.getAttribute("detailError")!=null){%>
 <p class="text-center"><%= request.getAttribute("detailError")%></p>
 <% }%>
-<form action="${pageContext.request.contextPath}/order_detail" class="was-validated" method="post">
+<form action="order_detail" class="was-validated" method="post">
 <div class="container-fluid">
     <div class="row">
         <div class="col-6 offset-3 text-center bg-light">
@@ -63,7 +63,7 @@
             <div class="form-floating">
                 <select class="form-select" id="region" name="region">
                     <%! List<String> regions=new ArrayList<>(); %>
-                    <% regions= DatabaseController.getRegions();%>
+                    <% regions= RegionDAO.getRegions();%>
                     <% for (String region : regions) { %>
                     <option><%=region%></option>
                     <% ;}%>

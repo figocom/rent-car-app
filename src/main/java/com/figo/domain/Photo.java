@@ -1,7 +1,8 @@
-package com.figo.rentcar.domain;
+package com.figo.domain;
 
 import lombok.*;
 
+import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -11,12 +12,14 @@ import java.util.List;
 @NonNull
 public class Photo extends BaseDomain {
     List<String> urls;
-    Integer carId;
+    String carNumber;
+
     @Builder(builderMethodName = "childBuilder")
     public Photo(String id, boolean deleted, LocalDateTime createdAt, LocalDateTime updatedAt, String createdBy, String updatedBy,
-                   @NonNull List<String> urls, @NonNull Integer carId){
+                   @NonNull List<String> urls, @NonNull String carNumber  ){
         super(id, deleted, createdAt, updatedAt, createdBy, updatedBy);
         this.urls=urls;
-        this.carId=carId;
+        this.carNumber=carNumber;
+
     }
 }

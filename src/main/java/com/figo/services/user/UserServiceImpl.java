@@ -1,22 +1,23 @@
-package uz.jl.blogpost.backend.services;
+package com.figo.services.user;
 
+
+import com.figo.criteria.UserCriteria;
+import com.figo.daos.UserDAO;
+import com.figo.domain.User;
+import com.figo.dtos.users.LoginRequestDTO;
+import com.figo.dtos.users.UserCreateDTO;
+import com.figo.dtos.users.UserDTO;
+import com.figo.dtos.users.UserUpdateDTO;
+import com.figo.mapper.UserMapper;
+import com.figo.response.DataDTO;
+import com.figo.response.ErrorDTO;
+import com.figo.response.Response;
+import com.figo.services.base.AbstractService;
+import com.figo.utils.validators.UserValidator;
 import lombok.NonNull;
-import uz.jl.blogpost.backend.criteria.UserCriteria;
-import uz.jl.blogpost.backend.daos.UserDAO;
-import uz.jl.blogpost.backend.domains.User;
-import uz.jl.blogpost.backend.dtos.user.LoginRequest;
-import uz.jl.blogpost.backend.dtos.user.UserCreateDTO;
-import uz.jl.blogpost.backend.dtos.user.UserDTO;
-import uz.jl.blogpost.backend.dtos.user.UserUpdateDTO;
-import uz.jl.blogpost.backend.mappers.UserMapper;
-import uz.jl.blogpost.backend.response.DataDTO;
-import uz.jl.blogpost.backend.response.ErrorDTO;
-import uz.jl.blogpost.backend.response.Response;
-import uz.jl.blogpost.backend.services.base.AbstractService;
-import uz.jl.blogpost.backend.utils.BaseUtil;
-import uz.jl.blogpost.backend.utils.validators.UserValidator;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.logging.Logger;
 
 public class UserServiceImpl extends AbstractService<UserDAO, UserMapper, UserValidator> implements UserService {
@@ -28,24 +29,35 @@ public class UserServiceImpl extends AbstractService<UserDAO, UserMapper, UserVa
     }
 
     @Override
+    public Response<DataDTO<List<UserDTO>>> getAll() {
+        return null;
+    }
+
+    @Override
     public Response<DataDTO<String>> create(@NonNull UserCreateDTO dto) {
         try {
             validator.checkOnCreate(dto);
             User user = mapper.fromCreateDTO(dto);
             user.setPassword(util.encode(user.getPassword()));
-            user.setId(BaseUtil.generateUniqueID());
-            dao.save(user);
+            dao.registerUser(user);
             return new Response<>(new DataDTO<>(user.getId()));
         } catch (IllegalArgumentException e) {
             logger.severe(e.getLocalizedMessage());
-            ErrorDTO error = new ErrorDTO(e.getCause());
+            ErrorDTO error = new ErrorDTO(e.getMessage());
             return new Response<>(new DataDTO<>(error));
         }
     }
 
     @Override
     public Response<DataDTO<Boolean>> update(@NonNull UserUpdateDTO dto) {
-        return null;
+        try {
+            Boolean updated = dao.updateUser(dto);
+            return new Response<>(new DataDTO<>(updated));
+        } catch (IllegalArgumentException e) {
+            logger.severe(e.getLocalizedMessage());
+            ErrorDTO error = new ErrorDTO(e.getMessage());
+            return new Response<>(new DataDTO<>(error));
+        }
     }
 
     @Override
@@ -55,25 +67,56 @@ public class UserServiceImpl extends AbstractService<UserDAO, UserMapper, UserVa
 
     @Override
     public Response<DataDTO<UserDTO>> get(@NonNull String s) {
-        return null;
+        try {
+            User user = dao.findByUsername(s);
+            UserDTO userDTO = mapper.toDTO(user);
+            return new Response<>(new DataDTO<>(userDTO));
+        } catch (IllegalArgumentException e) {
+            logger.severe(e.getLocalizedMessage());
+            ErrorDTO error = new ErrorDTO(e.getMessage());
+            return new Response<>(new DataDTO<>(error));
+        }
     }
 
     @Override
     public Response<DataDTO<List<UserDTO>>> getAll(@NonNull UserCriteria criteria) {
-        return null;
+        try {
+            List<User> admins = dao.getUsersList(criteria);
+            List<UserDTO> userDTOS = mapper.toDTOs(admins);
+            return new Response<>(new DataDTO<>(userDTOS));
+        }catch (IllegalArgumentException e) {
+            logger.severe(e.getLocalizedMessage());
+            ErrorDTO error = new ErrorDTO(e.getMessage());
+            return new Response<>(new DataDTO<>(error));
+        }
     }
 
     @Override
-    public Response<DataDTO<UserDTO>> login(@NonNull LoginRequest loginRequest) {
+    public Response<DataDTO<UserDTO>> login(@NonNull LoginRequestDTO loginRequest) {
         try {
             User user = dao.findByUsername(loginRequest.username());
+            if (Objects.isNull(user.getPassword()))   return new Response<>(new DataDTO<>(new ErrorDTO("Bad credentials")));
             if (!util.match(loginRequest.password(), user.getPassword()))
                 return new Response<>(new DataDTO<>(new ErrorDTO("Bad credentials")));
             UserDTO userDTO = mapper.toDTO(user);
             return new Response<>(new DataDTO<>(userDTO));
         } catch (RuntimeException e) {
-            // TODO: 08/12/22 need to logger here
-            return new Response<>(new DataDTO<>(new ErrorDTO("Bad credentials")));
+            logger.severe(e.getLocalizedMessage());
+            ErrorDTO error = new ErrorDTO(e.getMessage());
+            return new Response<>(new DataDTO<>(error));
+        }
+    }
+
+    @Override
+    public Response<DataDTO<Boolean>> userIsAdmin(UserDTO userDTO) {
+        try {
+            Boolean isAdmin = dao.userIsAdmin(userDTO);
+            return new Response<>(new DataDTO<>(isAdmin));
+        }
+        catch (RuntimeException e) {
+            logger.severe(e.getLocalizedMessage());
+            ErrorDTO error = new ErrorDTO(e.getMessage());
+            return new Response<>(new DataDTO<>(error));
         }
     }
 }

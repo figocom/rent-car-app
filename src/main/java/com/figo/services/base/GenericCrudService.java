@@ -1,15 +1,16 @@
-package uz.jl.blogpost.backend.services.base;
+package com.figo.services.base;
 
 
+import com.figo.criteria.GenericCriteria;
+import com.figo.dtos.base.DTO;
+import com.figo.dtos.base.GenericDTO;
+import com.figo.dtos.users.UserDTO;
+import com.figo.response.DataDTO;
+import com.figo.response.Response;
 import lombok.NonNull;
-import uz.jl.blogpost.backend.criteria.GenericCriteria;
-import uz.jl.blogpost.backend.dtos.Dto;
-import uz.jl.blogpost.backend.dtos.GenericDto;
-import uz.jl.blogpost.backend.response.DataDTO;
-import uz.jl.blogpost.backend.response.Response;
 
 import java.io.Serializable;
-
+import java.util.List;
 
 /**
  *
@@ -20,9 +21,9 @@ import java.io.Serializable;
  * @param <C> Criteria
  */
 public interface GenericCrudService<
-        D extends GenericDto,
-        CD extends Dto,
-        UD extends GenericDto,
+        D extends GenericDTO,
+        CD extends DTO,
+        UD extends GenericDTO,
         ID extends Serializable,
         C extends GenericCriteria>
         extends GenericService<D, ID, C> {
@@ -30,5 +31,7 @@ public interface GenericCrudService<
 
     Response<DataDTO<Boolean>> update(@NonNull UD dto);
 
+
     Response<DataDTO<Boolean>> delete(@NonNull ID id);
+     Response<DataDTO<List<D>>> getAll();
 }

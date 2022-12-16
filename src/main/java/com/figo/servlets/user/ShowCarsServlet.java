@@ -3,8 +3,8 @@ import com.figo.criteria.CarCriteria;
 import com.figo.criteria.PhotoCriteria;
 import com.figo.dtos.cars.CarDTO;
 import com.figo.enums.CarStatus;
-import com.figo.utils.CarUtil;
-import com.figo.utils.PhotoUtil;
+import com.figo.utils.serviceutil.CarUtil;
+import com.figo.utils.serviceutil.PhotoUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/carsShow")
-public class ShowCars extends HttpServlet {
+public class ShowCarsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
