@@ -1,15 +1,17 @@
-
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="com.figo.domain.OrderCarPhoto" %>
+<%@ page import="com.figo.enums.OrderStatus" %>
+<%@ page import="com.figo.daos.OrderCarPhotoDAO" %>
 
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 
-    <head>
-        <title>Orders</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-    </head>
+<head>
+    <title>Orders</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
 
 
 <body>
@@ -20,19 +22,19 @@
                 <a href="adminCabinet" class="nav-link">Home</a>
             </li>
             <li class="nav-item ">
-                <a href="addCar" class="nav-link" >Add Car</a>
+                <a href="addCar" class="nav-link">Add Car</a>
             </li>
             <li class="nav-item ">
-                <a href="showOrders" class="nav-link" >Show orders</a>
+                <a href="showOrders" class="nav-link">Show orders</a>
             </li>
             <li class="nav-item">
                 <a href="showAllCars" class="nav-link">Show all cars</a>
             </li>
             <li class="nav-item ">
-                <a href="WWADMIN" class="nav-link" >Work with admin</a>
+                <a href="WWADMIN" class="nav-link">Work with admin</a>
             </li>
             <li class="nav-item ">
-                <a href="FileUploadServlet" class="nav-link" >Add Photo to car</a>
+                <a href="FileUploadServlet" class="nav-link">Add Photo to car</a>
             </li>
             <li class="nav-item  ">
                 <a href="logout" class="nav-link ">Logout</a></li>
@@ -49,13 +51,13 @@
         <br>
         <% }%>
         <% if (request.getAttribute("allOrders") != null) {%>
-        <%! List<CarOrder> carOrders = new ArrayList<>();%>
-        <%carOrders = (List<CarOrder>) request.getAttribute("allOrders");%>
+        <%! List<OrderCarPhoto> carOrders = new ArrayList<>(); %>
+        <%carOrders = (List<OrderCarPhoto>) request.getAttribute("allOrders");;%>
         <br>
         <% }%>
 
 
-        <% for (CarOrder carOrder : carOrders) {
+        <% for (OrderCarPhoto carOrder : carOrders) {
             imagesUrl = carOrder.getPhotos().getUrls();%>
         <div class="card col-3 m-2">
             <form method="post" action="showOrders" class="was-validated">
@@ -87,6 +89,7 @@
                     <%}%>
                 </div>
                 <div class="card-body">
+                    <input type="hidden" name="orderId" value="<%=carOrder.getOrderId()%>">
                     <h4 class="card-title">Model: <%=carOrder.getCar().getCarModel()%>
                     </h4>
 
@@ -107,7 +110,7 @@
                     </h5>
                     <h5 class="card-text">Ordered time: <%
                         String[] tso = carOrder.getCreatedTime().toString().split("T");%>
-                        <%=tso[0]+" " +tso[1]%>
+                        <%=tso[0] + " " + tso[1]%>
                     </h5>
                     <h5 class="card-text">Driver License: <%=carOrder.getOrder().getDriverLicense()%>
                     </h5>
@@ -117,26 +120,26 @@
                     </h5>
                     <h5 class="card-text">Total price: <%=carOrder.getOrder().getTotalPrice()%>
                     </h5>
-
                     <h5 class="card-text">User phone number: <%=carOrder.getUserPhoneNumber()%>
                     </h5>
-
-                    <h5 class="card-text text-info">Status: <%=carOrder.getOrder().getStatus()%></h5>
-                    <% if (carOrder.getOrder().getStatus().equals(OrderStatus.REJECTED)) {%>
-                    <% String rejectCause =DatabaseController.getRejectCause(carOrder.getOrderId());%>
-                    <h5 class="card-text text-info"><%=rejectCause%></h5><%}%>
-                    <% if (carOrder.getOrder().getStatus().equals(OrderStatus.REQUESTED)) {%>
+                    <h5 class="card-text text-info">Status: <%=carOrder.getOrder().getOrderStatus()%>
+                    </h5>
+                    <% if (carOrder.getOrder().getOrderStatus().equals(OrderStatus.REJECTED)) {%>
+                    <% String rejectCause = OrderCarPhotoDAO.getRejectCause(carOrder.getOrderId());%>
+                    <h5 class="card-text text-info"><%=rejectCause%>
+                    </h5><%}%>
+                    <% if (carOrder.getOrder().getOrderStatus().equals(OrderStatus.REQUESTED)) {%>
                     <button class="  btn btn-primary " type="submit" name="command" value="accept">Accept</button>
                     <button type="button" onclick="document.getElementById('id02').style.display='block'"
                             class="btn btn-primary">Reject
                     </button>
                     <%}%>
-
-                    <% if (carOrder.getOrder().getStatus().equals(OrderStatus.COMPLETED)) {%>
+                    <% if (carOrder.getOrder().getOrderStatus().equals(OrderStatus.COMPLETED)) {%>
                     <button type="button" onclick="document.getElementById('id01').style.display='block'"
-                                class="btn btn-primary">Give fine
-                        </button>
-                    <button type="submit" class="btn btn-primary" name="command" value="finishOrder">Finish Order</button>
+                            class="btn btn-primary">Give fine
+                    </button>
+                    <button type="submit" class="btn btn-primary" name="command" value="finishOrder">Finish Order
+                    </button>
                     <%}%>
 
                 </div>
@@ -147,7 +150,12 @@
             <div class="modal-dialog">
                 <div class="modal-content bg-light">
                     <form method="post" action="showOrders" class="was-validated">
-                        <input type="hidden" name="orderId" value="<%=carOrder.getOrderId()%>">
+                        <div class="mb-3 mt-3 text-start">
+                            <label for="orderId" class="form-label ">Enter order id</label>
+                            <input type="text" class="form-control" id="orderId" placeholder="Enter order id" name="orderId" required>
+                            <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
                         <div class="mb-3 mt-3 text-start offset-1 col-10 ">
                             <label for="infoPenalty " class="form-label">Enter some cause for penalty
                                 :</label>
@@ -159,7 +167,8 @@
                         </div>
                         <div class="mb-3 mt-3 text-start offset-1 col-10">
                             <label for="pricePenalty" class="form-label">Enter penalty price :</label>
-                            <input type="text" class="form-control" id="pricePenalty" placeholder="Enter penalty price Example(35.43$):" name="pricePenalty" required>
+                            <input type="text" class="form-control" id="pricePenalty"
+                                   placeholder="Enter penalty price Example(35.43$):" name="pricePenalty" required>
                             <div class="valid-feedback">Valid.</div>
                             <div class="invalid-feedback">Please fill out this field.</div>
                         </div>
@@ -170,9 +179,11 @@
                             <div class="valid-feedback">Valid.</div>
                             <div class="invalid-feedback">Check this checkbox to continue.</div>
                         </div>
-                        <button type="submit" class="btn btn-danger col-3 offset-3 "   name="command" value="giveFine">Submit</button>
+                        <button type="submit" class="btn btn-danger col-3 offset-3 " name="command" value="giveFine">
+                            Submit
+                        </button>
                         <button type="button" class=" btn btn-primary col-3  close" title="Close Modal"
-                                onclick="document.getElementById('id01').style.display='none'">Cancel
+                                onclick="document.getElementById('id01').style.display='none' ">Cancel
                         </button>
                     </form>
                 </div>
@@ -182,10 +193,16 @@
             <div class="modal-dialog">
                 <div class="modal-content bg-light">
                     <form method="post" action="showOrders" class="was-validated">
-                        <input type="hidden" name="orderId" value="<%=carOrder.getOrderId()%>">
+                        <div class="mb-3 mt-3 text-start">
+                            <label for="orderId1" class="form-label ">Enter order id</label>
+                            <input type="text" class="form-control" id="orderId1" placeholder="Enter order id" name="orderId" required>
+                            <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
                         <div class="mb-3 mt-3 text-start  offset-1 col-10">
                             <label for="rejectCause " class="form-label">Enter some cause for reject :</label>
-                            <textarea class="form-control" rows="3" id="rejectCause " placeholder="Enter some cause for reject :"
+                            <textarea class="form-control" rows="3" id="rejectCause "
+                                      placeholder="Enter some cause for reject :"
                                       name="rejectCause" required></textarea>
                             <div class="valid-feedback">Valid.</div>
                             <div class="invalid-feedback">Please fill out this field.</div>
@@ -197,7 +214,9 @@
                             <div class="valid-feedback">Valid.</div>
                             <div class="invalid-feedback">Check this checkbox to continue.</div>
                         </div>
-                        <button type="submit" class="btn btn-danger col-3 offset-3 "  name="command" value="reject">Submit</button>
+                        <button type="submit" class="btn btn-danger col-3 offset-3 " name="command" value="reject">
+                            Submit
+                        </button>
                         <button type="button" class=" btn btn-primary col-3  close" title="Close Modal"
                                 onclick="document.getElementById('id02').style.display='none'">Cancel
                         </button>

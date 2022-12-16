@@ -35,8 +35,8 @@ class OrderServiceImplTest {
 
     @Test
     void create() {
-        Response<DataDTO<String>> dataDTOResponse = service.create(new OrderCreateDTO(10, 8, "2022-12-14 00:00:00", "2022-12-15 00:00:00",
-                OrderStatus.REQUESTED, "AA2345676", "AA2345676", "Navoiy", 0.0));
+        Response<DataDTO<String>> dataDTOResponse = service.create(new OrderCreateDTO(9, 1, "2022-12-24", "2022-12-29",
+                OrderStatus.REQUESTED, "AA2345677", "AA2345677", "Navoiy", 0.0));
         Assertions.assertTrue(dataDTOResponse.data().isSuccess());
     }
 

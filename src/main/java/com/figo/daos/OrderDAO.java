@@ -49,7 +49,7 @@ public class OrderDAO extends GenericDAO<Order> implements AbstractDAO {
     public static List<Order> getOrders(Integer carId) {
         List<Order> orders = new ArrayList<>();
         Connection connection = DatabaseConfiguration.getConnection();
-        String query = "select * from order_table where is_deleted=false  and car_id=?";
+        String query = "select * from order_table where is_deleted=false    and car_id=?";
         try {
             PreparedStatement preparedStatement = Objects.requireNonNull(connection).prepareStatement(query);
             preparedStatement.setInt(1, carId);
@@ -184,7 +184,7 @@ public class OrderDAO extends GenericDAO<Order> implements AbstractDAO {
         } catch (SQLException e) {
             throw new RuntimeException("Error in server");
         }
-        return true;
+        return Boolean.TRUE;
     }
 
 }

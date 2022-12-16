@@ -96,7 +96,7 @@ public class PayCardDAO extends GenericDAO<PayCard> implements AbstractDAO{
         try {
             String query = "select * from card where is_deleted=false and card_number= ?";
             PreparedStatement statement = Objects.requireNonNull(connection).prepareStatement(query);
-            statement.setInt(1, Integer.parseInt(id));
+            statement.setString(1, id);
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {

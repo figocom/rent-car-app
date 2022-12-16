@@ -56,7 +56,7 @@ public class PenaltyDAO {
             Statement statement = Objects.requireNonNull(connection).createStatement();
             PreparedStatement statement2 = Objects.requireNonNull(connection).prepareStatement(query2);
             statement2.setDouble(1, Double.parseDouble(penaltyAmount.substring(0, penaltyAmount.length() - 1)));
-            statement2.setInt(2, Integer.parseInt(cardIdForPay));
+            statement2.setString(2, cardIdForPay);
             statement3.setString(1, String.valueOf(OrderStatus.FinePayment));
             statement3.setInt(2, Integer.parseInt(orderId));
             statement3.executeUpdate();
@@ -74,6 +74,6 @@ public class PenaltyDAO {
             e.printStackTrace();
             return new Response<>(new DataDTO<>(new ErrorDTO("Server error!")));
         }
-        return new Response<>(new DataDTO<>(true));
+        return new Response<>(new DataDTO<>(Boolean.TRUE));
     }
 }

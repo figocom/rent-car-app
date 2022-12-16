@@ -39,6 +39,27 @@ public class CarDAO extends GenericDAO<User> implements AbstractDAO {
             throw new RuntimeException("Error in server");
         }
     }
+    public static Integer getCarId(Integer orderId) {
+        Integer carId = null;
+        Connection connection = DatabaseConfiguration.getConnection();
+        try {
+            String query = "select car_id from order_table where  id=?";
+            PreparedStatement statement = Objects.requireNonNull(connection).prepareStatement(query);
+            statement.setInt(1, orderId);
+            ResultSet set = statement.executeQuery();
+            if (set.next()) {
+                carId = set.getInt(1);
+            }
+            set.close();
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return carId;
+    }
+
 
     public static int getCarId(String carNumber) {
         Connection connection = DatabaseConfiguration.getConnection();
@@ -156,12 +177,39 @@ public class CarDAO extends GenericDAO<User> implements AbstractDAO {
     }
 
 
-    public void updateCarStatus(int carId, CarStatus valueOf) {
+    public static boolean updateCarStatus(int carId, CarStatus valueOf) {
 
+        Connection connection = DatabaseConfiguration.getConnection();
+        try {
+            String query = "update car set car_status = ? where is_deleted=false and id=?";
+            PreparedStatement statement = Objects.requireNonNull(connection).prepareStatement(query);
+            statement.setString(1, String.valueOf(valueOf));
+            statement.setInt(2, carId);
+             statement.execute();
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            throw  new IllegalArgumentException("Error in server");
+        }
+        return true;
     }
 
     public CarDTO getCar(String carNumber) {
 
         return null;
+    }
+
+    public boolean deleteCar(String carNumber) {
+        Connection connection = DatabaseConfiguration.getConnection();
+        try {
+            String query = "update car set is_deleted=true where car_number='" + carNumber + "'";
+            Statement statement = Objects.requireNonNull(connection).createStatement();
+            statement.execute(query);
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+           throw  new IllegalArgumentException("Error in server");
+        }
+        return  true;
     }
 }

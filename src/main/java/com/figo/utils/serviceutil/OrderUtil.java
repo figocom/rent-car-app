@@ -4,6 +4,7 @@ package com.figo.utils.serviceutil;
 import com.figo.daos.CarDAO;
 import com.figo.daos.OrderDAO;
 import com.figo.domain.Order;
+import com.figo.enums.OrderStatus;
 import com.figo.mapper.OrderMapper;
 import com.figo.services.order.OrderService;
 import com.figo.services.order.OrderServiceImpl;
@@ -63,7 +64,7 @@ public class OrderUtil {
         List<Order> orders = OrderDAO.getOrders(requestedOrder.getCarId());
         if (!orders.isEmpty()) {
             for (Order order : orders) {
-                if (!requestedOrder.getStartTime().isAfter(order.getEndTime()) &&
+                if (!order.getOrderStatus().equals(OrderStatus.REJECTED)&&!requestedOrder.getStartTime().isAfter(order.getEndTime()) &&
                         !order.getStartTime().isAfter(requestedOrder.getEndTime())) {
                     throw new IllegalArgumentException("This car is busy during this interval");
                 }

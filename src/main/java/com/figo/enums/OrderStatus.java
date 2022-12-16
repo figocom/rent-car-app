@@ -1,5 +1,5 @@
 package com.figo.enums;
 
 public enum OrderStatus {
-    REQUESTED ,ACCEPTED ,REJECTED, Payed, COMPLETED, FINED,FinePayment
+    REQUESTED ,ACCEPTED ,REJECTED, Payed, COMPLETED, FINED, FINISHED, FinePayment
 }

@@ -9,150 +9,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e10686be-ca6e-4929-a065-ebddbc578787" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/figo/servlets/admin/WorkWithAdminServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="e10686be-ca6e-4929-a065-ebddbc578787" name="Changes" comment="initial">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/figo/servlets/admin/AdminShowAllOrders.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/figo/servlets/admin/WorkWithCarsServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/configs/DatabaseConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/configs/DatabaseConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/criteria/CarCriteria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/criteria/CarCriteria.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/criteria/GenericCriteria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/criteria/GenericCriteria.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/criteria/OrderCriteria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/criteria/OrderCriteria.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/criteria/PayCardCriteria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/criteria/PayCardCriteria.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/criteria/PhotoCriteria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/criteria/PhotoCriteria.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/criteria/UserCriteria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/criteria/UserCriteria.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/daos/AbstractDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/daos/AbstractDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/daos/CarDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/daos/CarDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/daos/GenericDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/daos/GenericDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/daos/OrderCarPhotoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/daos/OrderCarPhotoDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/daos/OrderDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/daos/OrderDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/daos/PayCardDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/daos/PayCardDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/daos/PenaltyDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/daos/PenaltyDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/daos/PhotoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/daos/PhotoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/daos/RegionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/daos/RegionDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/daos/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/daos/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/domain/BaseDomain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/domain/BaseDomain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/domain/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/domain/Car.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/domain/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/domain/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/domain/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/domain/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/domain/OrderCarPhoto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/domain/OrderCarPhoto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/domain/PayCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/domain/PayCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/domain/Penalty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/domain/Penalty.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/domain/Photo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/domain/Photo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/dtos/base/DTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/dtos/base/DTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/dtos/base/GenericDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/dtos/base/GenericDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/dtos/cars/CarCreateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/dtos/cars/CarCreateDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/dtos/cars/CarDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/dtos/cars/CarDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/dtos/cars/DeleteCarRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/dtos/cars/DeleteCarRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/dtos/orders/DeleteOrderRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/dtos/orders/DeleteOrderRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/dtos/orders/OrderCreateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/dtos/orders/OrderCreateDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/dtos/orders/OrderDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/dtos/orders/OrderDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/dtos/orders/OrderUpdateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/dtos/orders/OrderUpdateDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/dtos/paycards/CreateCardDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/dtos/paycards/CreateCardDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/dtos/paycards/DeleteCardRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/dtos/paycards/DeleteCardRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/dtos/paycards/PayCardDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/dtos/paycards/PayCardDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/dtos/photos/PhotoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/dtos/photos/PhotoDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/dtos/users/LoginRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/dtos/users/LoginRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/dtos/users/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/dtos/users/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/dtos/users/UserUpdateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/dtos/users/UserUpdateDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/enums/CarStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/enums/CarStatus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/enums/OrderStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/enums/OrderStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/mapper/BaseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/mapper/BaseMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/mapper/CarMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/mapper/CarMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/mapper/Mapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/mapper/Mapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/mapper/OrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/mapper/OrderMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/mapper/PayCardMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/mapper/PayCardMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/mapper/PhotoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/mapper/PhotoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/rentcar/configs/DatabaseConfiguration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/rentcar/daos/AbstractDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/rentcar/daos/GenericDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/rentcar/daos/UserDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/rentcar/domain/BaseDomain.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/rentcar/domain/Car.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/rentcar/domain/CarOrder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/rentcar/domain/Entity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/rentcar/domain/Order.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/rentcar/domain/PayCard.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/rentcar/domain/Photo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/rentcar/domain/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/rentcar/dtos/base/DTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/rentcar/dtos/base/GenericDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/rentcar/dtos/users/LoginRequestDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/rentcar/dtos/users/UserCreateDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/rentcar/dtos/users/UserDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/rentcar/enums/CarStatus.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/rentcar/enums/OrderStatus.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/rentcar/mapper/BaseMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/rentcar/response/DataDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/rentcar/response/ErrorDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/rentcar/response/Response.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/response/DataDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/response/DataDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/response/ErrorDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/response/ErrorDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/response/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/response/Response.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/services/base/AbstractService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/services/base/AbstractService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/services/base/GenericCrudService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/services/base/GenericCrudService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/services/base/GenericService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/services/base/GenericService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/services/car/CarService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/services/car/CarService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/services/car/CarServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/services/car/CarServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/services/order/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/services/order/OrderService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/services/order/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/services/order/OrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/services/paycard/PayCardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/services/paycard/PayCardService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/services/paycard/PayCardServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/services/paycard/PayCardServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/services/photo/PhotoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/services/photo/PhotoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/services/photo/PhotoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/services/photo/PhotoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/services/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/services/user/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/services/user/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/services/user/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/servlets/admin/AddCarServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/servlets/admin/AddCarServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/servlets/admin/FileUploadServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/servlets/admin/FileUploadServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/servlets/auth/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/servlets/auth/LoginServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/servlets/auth/LogoutServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/servlets/auth/LogoutServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/servlets/auth/UserRegisterServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/servlets/auth/UserRegisterServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/servlets/user/AddCardServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/servlets/user/AddCardServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/servlets/user/OrderDetailsServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/servlets/user/OrderDetailsServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/servlets/user/ShowCarsServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/servlets/user/ShowCarsServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/servlets/admin/WorkWithAdminServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/servlets/admin/WorkWithAdminServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/servlets/user/UserOrdersServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/servlets/user/UserOrdersServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/servlets/user/UserPenaltiesServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/servlets/user/UserPenaltiesServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/utils/serviceutil/BaseUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/utils/serviceutil/BaseUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/utils/serviceutil/CarUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/utils/serviceutil/CarUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/utils/serviceutil/OrderUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/utils/serviceutil/OrderUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/utils/serviceutil/PayCardUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/utils/serviceutil/PayCardUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/utils/serviceutil/PhotoUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/utils/serviceutil/PhotoUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/utils/serviceutil/UserUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/utils/serviceutil/UserUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/utils/validators/AbstractValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/utils/validators/AbstractValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/utils/validators/BaseValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/utils/validators/BaseValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/utils/validators/CarValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/utils/validators/CarValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/utils/validators/OrderValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/utils/validators/OrderValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/utils/validators/PayCardValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/utils/validators/PayCardValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/utils/validators/PhotoValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/utils/validators/PhotoValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/figo/utils/validators/UserValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/figo/utils/validators/UserValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminsFrontendPages/adminAddCar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminsFrontendPages/adminAddCar.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminsFrontendPages/adminAddCarPhoto.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminsFrontendPages/adminAddCarPhoto.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminsFrontendPages/adminMainPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminsFrontendPages/adminMainPage.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/adminsFrontendPages/adminShowAllOrders.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminsFrontendPages/adminShowAllOrders.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminsFrontendPages/workWithAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminsFrontendPages/workWithAdmin.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/adminsFrontendPages/workWithCars.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminsFrontendPages/workWithCars.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/carImages/Avtobus biletManguberdief663fef-1b88-4871-8297-ca52ccdc2bc6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/carImages/jiguli4537c070-45d3-4114-8a01-8405ec7d70f3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/carImages/jiguli9efd5790-5e0a-42c0-84b9-f6dfab090519.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/carImages/jigulifac5a608-a372-43fd-b250-5573a00a33ab.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/carImages/lacetti3ddc7719-1c75-41e9-b80b-b5f937cfefcc.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/carImages/lacetti71429ecd-64c2-4865-a290-f5e3f88954f1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/carImages/lacettiefdf1f98-8f77-4d67-8720-be6873dcce72.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/carImages/pradoImage7cc0fbef-d283-49ae-9ea6-5dbfdd9e0514.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/usersFrontendPages/ChoiceCarForOrder.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/usersFrontendPages/ChoiceCarForOrder.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/usersFrontendPages/UserOrders.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/usersFrontendPages/UserOrders.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/usersFrontendPages/addCard.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/usersFrontendPages/addCard.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/usersFrontendPages/getOrderDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/usersFrontendPages/getOrderDetail.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/usersFrontendPages/penalties.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/usersFrontendPages/penalties.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/usersFrontendPages/userMainPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/usersFrontendPages/userMainPage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/figo/services/car/CarServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/figo/services/car/CarServiceImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/figo/services/order/OrderServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/figo/services/order/OrderServiceImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/figo/services/paycard/PayCardServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/figo/services/paycard/PayCardServiceImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/figo/services/photo/PhotoServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/figo/services/photo/PhotoServiceImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/figo/services/user/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/figo/services/user/UserServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,7 +77,8 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;DatabaseDriversLRU&quot;: [
@@ -505,11 +383,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.OrderServiceImplTest.create" />
         <item itemvalue="JUnit.UserServiceTest.login_with_right_credentials_Test" />
         <item itemvalue="JUnit.PayCardServiceImplTest.delete" />
         <item itemvalue="JUnit.PayCardServiceImplTest.create" />
         <item itemvalue="JUnit.CarServiceImplTest.checkThread" />
-        <item itemvalue="JUnit.OrderServiceImplTest.create" />
       </list>
     </recent_temporary>
   </component>
@@ -526,8 +404,18 @@
       <workItem from="1670835707132" duration="24360000" />
       <workItem from="1670921907118" duration="5103000" />
       <workItem from="1670966518160" duration="17613000" />
-      <workItem from="1671104150598" duration="10313000" />
+      <workItem from="1671104150598" duration="12274000" />
+      <workItem from="1671169348084" duration="2572000" />
+      <workItem from="1671174030446" duration="10470000" />
     </task>
+    <task id="LOCAL-00001" summary="initial">
+      <created>1671162929600</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1671162929600</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -546,6 +434,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="initial" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -592,12 +482,21 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/figo/services/car/CarServiceImpl.java</url>
-          <line>57</line>
+          <line>63</line>
           <properties class="com.figo.services.car.CarServiceImpl">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/figo/daos/CarDAO.java</url>
+          <line>82</line>
+          <properties class="com.figo.daos.CarDAO" method="getCarPrice">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="55" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/figo/servlets/admin/FileUploadServlet.java</url>
@@ -611,23 +510,33 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/figo/utils/serviceutil/OrderUtil.java</url>
-          <line>46</line>
+          <line>47</line>
           <option name="timeStamp" value="40" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/figo/services/car/CarServiceImpl.java</url>
-          <line>54</line>
-          <option name="timeStamp" value="44" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/figo/servlets/admin/WorkWithAdminServlet.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="52" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/figo/daos/UserDAO.java</url>
           <line>190</line>
           <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/figo/servlets/user/UserOrdersServlet.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/figo/servlets/user/UserOrdersServlet.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/figo/servlets/user/ShowCarsServlet.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/figo/servlets/user/OrderDetailsServlet.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="59" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

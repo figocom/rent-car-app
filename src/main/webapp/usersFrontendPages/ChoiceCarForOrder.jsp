@@ -30,9 +30,7 @@
 <%! List<String> imagesUrl = new ArrayList<>();%>
 <%! List<CarDTO> cars = new ArrayList<>(); %>
 <%cars = (List<CarDTO>) request.getAttribute("cars");%>
-<% images= (List<PhotoDTO>) request.getAttribute("photos");
-
-%>
+<% images= (List<PhotoDTO>) request.getAttribute("photos");%>
 
     <div class="container-fluid">
         <div class="row">

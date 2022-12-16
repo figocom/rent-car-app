@@ -4,7 +4,6 @@ import com.figo.criteria.CarCriteria;
 import com.figo.daos.CarDAO;
 
 import com.figo.daos.OrderDAO;
-import com.figo.daos.RegionDAO;
 import com.figo.domain.Car;
 import com.figo.domain.Order;
 import com.figo.dtos.cars.CarCreateDTO;
@@ -51,9 +50,16 @@ static {
 
     @Override
     public Response<DataDTO<Boolean>> update(@NonNull CarDTO dto) {
-        return null;
+        try {
+            boolean updateCarStatus = dao.updateCarStatus(Integer.parseInt(dto.getId()), CarStatus.NOT_ON_RENT);
+            return new Response<>(new DataDTO<>(updateCarStatus));
+        }catch (IllegalArgumentException e) {
+            logger.severe(e.getLocalizedMessage());
+            ErrorDTO error = new ErrorDTO(e.getMessage());
+            return new Response<>(new DataDTO<>(error));
+        }
     }
-    //todo bir kunda birmarta ishlaydigan qilish
+
 
 
         LocalDateTime  localDateTime = LocalDateTime.now();
@@ -128,9 +134,18 @@ static {
 
     }
 
+
+
     @Override
     public Response<DataDTO<Boolean>> delete(@NonNull String s) {
-        return null;
+            try {
+                boolean deleted = dao.deleteCar(s);
+                return new Response<>(new DataDTO<>(deleted));
+            }catch (IllegalArgumentException e) {
+                logger.severe(e.getLocalizedMessage());
+                ErrorDTO error = new ErrorDTO(e.getMessage());
+                return new Response<>(new DataDTO<>(error));
+            }
     }
 
     @Override

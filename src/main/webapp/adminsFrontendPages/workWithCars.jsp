@@ -1,8 +1,9 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="com.company.entity.Car" %>
-<%@ page import="com.company.controller.DatabaseController" %>
-<%@ page import="com.company.enums.CarStatus" %>
+<%@ page import="com.figo.dtos.photos.PhotoDTO" %>
+<%@ page import="com.figo.dtos.cars.CarDTO" %>
+<%@ page import="com.figo.enums.CarStatus" %>
+<%@ page import="java.util.Objects" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
@@ -40,19 +41,21 @@
 <h1 class="text-center">Cars</h1>
 <br>
 
+<%! List<PhotoDTO> images = new ArrayList<>();%>
 <%! List<String> imagesUrl = new ArrayList<>();%>
-<% if (request.getAttribute("isDeleted") != null) {%>
-<h4 class="text-center"><%= request.getAttribute("isDeleted")%>
-</h4>
-<br>
-<% }%>
-<%! Object cars = new ArrayList<>(); %>
-<%cars = request.getAttribute("cars");%>
+<%! List<CarDTO> cars = new ArrayList<>(); %>
+<%cars = (List<CarDTO>) request.getAttribute("cars");%>
+<% images= (List<PhotoDTO>) request.getAttribute("photos");
+ if (cars.size()>0){
+%>
+
 <form method="post" action="showAllCars">
     <div class="container-fluid">
         <div class="row">
-            <% for (Car car : (List<Car>) cars) {
-                imagesUrl = DatabaseController.getImagesByCarNumber(car.getCarNumber());%>
+            <% for (CarDTO car : cars) {
+                if (Objects.nonNull(images)) {
+                    imagesUrl.addAll(images.stream().filter(photoDTO -> photoDTO.getCarNumber().equals(car.getCarNumber())).findFirst().orElse(new PhotoDTO()).getUrls());
+                } %>
             <div class="card col-3">
                 <form method="post" action="showAllCars">
                     <div id="<%=car.getCarNumber()%>" class="carousel slide" data-bs-ride="carousel">
@@ -103,7 +106,7 @@
                         </h5>
                         <%}%>
                         <button class="  btn btn-danger  " name="command" value="delete" type="submit">Delete</button>
-                        <%if (car.getCarStatus().equals(CarStatus.BROKEN)) {%>
+                        <%if (car.getCarStatus().equals(String.valueOf(CarStatus.BROKEN))) {%>
                         <button class="  btn btn-primary " name="command" value="repair" type="submit">Repaired</button>
                         <%}%>
                     </div>
@@ -116,5 +119,6 @@
 
     </div>
 </form>
+<%}%>
 </body>
 </html>

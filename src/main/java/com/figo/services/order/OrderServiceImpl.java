@@ -49,7 +49,7 @@ public class OrderServiceImpl extends AbstractService<OrderDAO, OrderMapper, Ord
     @Override
     public Response<DataDTO<Boolean>> update(@NonNull OrderUpdateDTO dto) {
         try {
-          boolean update=  dao.update(dto);
+          Boolean update=  dao.update(dto);
           return new Response<>(new DataDTO<>(update));
         } catch (IllegalArgumentException e) {
             logger.severe(e.getLocalizedMessage());
